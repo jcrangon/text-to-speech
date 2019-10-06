@@ -2,19 +2,18 @@
 
 namespace App\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TtsController extends AbstractController
+class SttController extends AbstractController
 {
     /**
-     * @Route("/tts")
+     * @Route("/stt")
      */
     public function index()
     {
-        return $this->render('tts/index.html.twig', [
-            'controller_name' => 'TtsController',
+        return $this->render('stt/index.html.twig', [
+            'controller_name' => 'SttController',
         ]);
     }
 }

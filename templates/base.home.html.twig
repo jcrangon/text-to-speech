@@ -54,25 +54,65 @@
         <meta name="twitter:description" content="">
         <meta name="twitter:url" content="https://">
 
-        <title>{% block title %}TTS{% endblock %}</title>
+        <title>{% block title %}Speech{% endblock %}</title>
 
         {% block stylesheets %}
+            <!-- Google Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Ruda:400,900,700" rel="stylesheet">
+            <!-- Bootstrap -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+            <!-- Font Awsome -->
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" samesite="none" secure>
-
-            <link rel="stylesheet" href="{{ asset('lib/css/styles.css') }}">
+            <!-- Plugin CSS Files -->
+            <link rel="stylesheet" href="{{ asset('lib/plugins/hover-pack/hover-pack.css') }}">
+            <!-- Main style sheet -->
+            <link rel="stylesheet" href="{{ asset('lib/css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('lib/css/colors/color-74c9be.css') }}">
         {% endblock %}
     </head>
 
     <body>
-        {% block body %}
-        {% endblock %}
+    <div id="headerwrap">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2 mt">
+                    <h1>Speech Engine Powered by IBM API</h1>
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <div id="copyrights">
+        <div class="container">
+            <p>
+                &copy; Copyrights <strong>Marco</strong>. All Rights Reserved
+            </p>
+            <div class="credits">
+                <!--
+                  You are NOT allowed to delete the credit link to TemplateMag with free version.
+                  You can delete the credit link only if you bought the pro version.
+                  Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/marco-bootstrap-agency-template/
+                  Licensing information: https://templatemag.com/license/
+                -->
+                Created with Marco template by <a href="https://templatemag.com/">TemplateMag</a>
+            </div>
+        </div>
+    </div>
+    <!-- / copyrights -->
+
 
         {% block javascripts %}
+            <!-- Bootstrap -->
             <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+            <!-- Plugin JS Files -->
+            <script type="application/javascript" src="{{ asset('lib/plugins/hover-pack/hover-pack.js') }}"></script>
+            <script type="application/javascript" src="{{ asset('lib/plugins/php-mail-form/validate.js') }}"></script>
+            <!-- Main JS files -->
             <script type="application/javascript" src="{{ asset('lib/js/script.js') }}"></script>
         {% endblock %}
     </body>
