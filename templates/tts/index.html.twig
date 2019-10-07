@@ -1,15 +1,29 @@
-{% extends 'base.tts.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Speech | TTS{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>{{ controller_name }} - function 'index()'</h1>
-
-</div>
+    <div id="headerwrap">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-sm-12">
+                    <h1>Text-To-Speech</h1>
+                    <h3>Choose :</h3>
+                    <div class="row centered pt-5">
+                        <div class="col-sm-6">
+                            <a href="{{ path('app_tts_ttsfront') }}"><button type="button" class="btn btn-yellow btn-cta btn-lg">Use FRONTEND scripts</button></a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="{{ path('app_stt_index') }}"><button id="toSTT" type="button" class="btn btn-yellow btn-cta btn-lg">Use BACKEND scripts</button></a>
+                        </div>
+                    </div>
+                    <div class="row centered pt-3">
+                        <div class="col-sm-12">
+                            <a href="{{ path('app_home_index') }}"><img src="{{ asset('lib/images/goback.png') }}" alt="go back" height="50px" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

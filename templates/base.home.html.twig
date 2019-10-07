@@ -75,7 +75,7 @@
     <div id="headerwrap">
         <div class="container">
             <div class="row centered">
-                <div class="col-lg-8 col-lg-offset-2 mt">
+                <div class="col-sm-8 col-sm-offset-2 mt">
                     <h1>Speech Engine Powered by IBM API</h1>
                     {% block body %}
                     {% endblock %}
@@ -88,7 +88,7 @@
     <div id="copyrights">
         <div class="container">
             <p>
-                &copy; Copyrights <strong>Marco</strong>. All Rights Reserved
+                &copy; Copyrights <strong>DevnetX Software</strong>. All Rights Reserved
             </p>
             <div class="credits">
                 <!--
@@ -103,6 +103,9 @@
     </div>
     <!-- / copyrights -->
 
+    <!-- Remove for Production -->
+    {% include 'data.monitoring.html.twig' %}
+    <!-- / Remove for Production -->
 
         {% block javascripts %}
             <!-- Bootstrap -->

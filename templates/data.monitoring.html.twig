@@ -1,0 +1,31 @@
+<!-- data monitoring -->
+<div>
+    <h1>Data-Monitoring</h1>
+    <hr width="100%">
+</div>
+<div>
+    {#<form action="" method="post">
+        <input type="text" name="nom" placeholder="Nom...">
+        <button type="submit">Envoyer</button>
+    </form>#}
+
+    {# Pour afficher l'objet request  grace a twig : #}
+    <p>Objet Request:</p>
+    {{ dump (app.getRequest() )}}
+
+    {# Pour afficher les donnée entrantes grace a twig : #}
+    <p>Request Method used:</p>
+    {{ dump (app.getRequest().getMethod() )}}
+
+    <p>Données POST:</p>
+    {{ dump (app.getRequest.request )}}
+
+    <p>Données GET:</p>
+    {{ dump (app.getRequest.query )}}
+    {# Peut aussi s'ecrire en notatin courte : #}
+    {#{{ dump(app.request.method()) }}#}
+
+    <p>Données de Session:</p>
+    {{ dump(app.session.all) }}
+</div>
+<!-- / data monitoring -->

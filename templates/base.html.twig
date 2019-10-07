@@ -57,17 +57,42 @@
         <title>{% block title %}TTS{% endblock %}</title>
 
         {% block stylesheets %}
+            <!-- Google Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Ruda:400,900,700" rel="stylesheet">
+            <!-- Bootstrap -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+            <!-- Font Awsome -->
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" samesite="none" secure>
-
+            <!-- Main style sheet -->
             <link rel="stylesheet" href="{{ asset('lib/css/styles.css') }}">
         {% endblock %}
     </head>
 
     <body>
+
         {% block body %}
         {% endblock %}
+
+        <div id="copyrights">
+            <div class="container">
+                <p>
+                    &copy; Copyrights <strong>DevnetX Software</strong>. All Rights Reserved
+                </p>
+                <div class="credits">
+                    <!--
+                      You are NOT allowed to delete the credit link to TemplateMag with free version.
+                      You can delete the credit link only if you bought the pro version.
+                      Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/marco-bootstrap-agency-template/
+                      Licensing information: https://templatemag.com/license/
+                    -->
+                    Created with Marco template by <a href="https://templatemag.com/">TemplateMag</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remove for Production -->
+        {% include 'data.monitoring.html.twig' %}
+        <!-- / Remove for Production -->
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
