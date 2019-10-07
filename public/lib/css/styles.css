@@ -259,6 +259,12 @@ p.capitalize:first-letter {
     margin: 0 auto;
 }
 
+/* Form Wrapper */
+.formwrapper{
+    background:rgba(21,8,105,0.6);
+    color:antiquewhite
+}
+
 /* Copyrights */
 
 #copyrights {
