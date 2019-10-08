@@ -3,20 +3,22 @@
 namespace App\Form;
 
 use App\Entity\ApiData;
+use App\Entity\VoiceCatalog;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ApiDataType extends AbstractType
+class ApiDataBackType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $voiceCatalog=new VoiceCatalog();
         $builder
             ->add('voice', ChoiceType::class,
                 [
-                    'choices' => [],
+                    'choices' => $voiceCatalog->getVoiceList(),
                     'label' => false,
                     'attr' =>
                         [
@@ -25,7 +27,6 @@ class ApiDataType extends AbstractType
                 ])
             ->add('text', TextareaType::class,
                 [
-                    'label' => 'Text',
                     'attr' =>
                         [
                             'class' => 'formTextarea',

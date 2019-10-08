@@ -265,6 +265,23 @@ p.capitalize:first-letter {
     color:antiquewhite
 }
 
+/* Form textarea */
+.formTextarea{
+    min-height:200px;
+    color:antiquewhite;
+    background:#3f3f4d;
+}
+.formTextarea:focus{
+    min-height:200px;
+    color:antiquewhite;
+    background:#3f3f4d;
+}
+
+.formSelect{
+    background: black;
+    color:limegreen;
+}
+
 /* Copyrights */
 
 #copyrights {

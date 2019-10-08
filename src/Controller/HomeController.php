@@ -15,8 +15,9 @@ class HomeController extends AbstractController
     public function redirectTTS(){
         return $this->redirectToRoute('app_home_index');
     }
+
     /**
-     * @Route("/home")
+     * @Route("/{_locale}/home")
      */
     public function index()
     {

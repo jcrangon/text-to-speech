@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Speech | TTS FrontEnd{% endblock %}
+{% block title %}Speech | TTS BackEnd{% endblock %}
 
 {% block body %}
     <div id="headerwrap2">
         <div class="container">
             <div class="row centered">
                 <div class="col-sm-12">
-                    <h1>Text-To-Speech Front-End Script</h1>
+                    <h1>Text-To-Speech back-End Script</h1>
                     <h5>{% trans %}Choose a language and type in a text...{% endtrans %}</h5>
                     <div class="row centered pt-5 justify-content-center">
                         <div class="col-sm-8 rounded formwrapper pt-3">
-                            {{ form(form)}}
+                            {{ form(form) }}
                         </div>
                     </div>
                     <div class="row centered pt-3">
                         <div class="col-sm-12">
-                            <a href="{{ path('app_stt_index') }}"><img src="{{ asset('lib/images/goback.png') }}" alt="go back" height="50px" title="{% trans %}Go Back{% endtrans %}"/></a>
+                            <a href="{{ path('app_tts_index') }}"><img src="{{ asset('lib/images/goback.png') }}" alt="go back" height="50px" title="{% trans %}Go Back{% endtrans %}"/></a>
                         </div>
                     </div>
                 </div>

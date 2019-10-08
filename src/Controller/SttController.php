@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SttController extends AbstractController
 {
     /**
-     * @Route("/stt")
+     * @Route("/{_locale}/stt")
      */
     public function index()
     {

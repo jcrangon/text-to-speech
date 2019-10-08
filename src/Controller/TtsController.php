@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ApiData;
+use App\Form\ApiDataBackType;
 use App\Form\ApiDataType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TtsController extends AbstractController
 {
     /**
-     * @Route("/tts")
+     * @Route("/{_locale}/tts")
      */
     public function index()
     {
@@ -20,7 +21,7 @@ class TtsController extends AbstractController
     }
 
     /**
-     * @Route("/tts/frontend")
+     * @Route("/{_locale}/tts/frontend")
      */
     public function ttsFront()
     {
@@ -28,6 +29,19 @@ class TtsController extends AbstractController
         $form=$this->createForm(ApiDataType::class,$apiData);
 
         return $this->render('tts/ttsFront.html.twig', [
+            "form"=>$form->createView(),
+        ]);
+    }
+    
+    /**
+     * @Route("/{_locale}/tts/backend")
+     */
+    public function ttsBack()
+    {
+        $apiData=new ApiData();
+        $form=$this->createForm(ApiDataBackType::class,$apiData);
+
+        return $this->render('tts/ttsBack.html.twig', [
             "form"=>$form->createView(),
         ]);
     }
