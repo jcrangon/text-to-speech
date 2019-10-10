@@ -259,6 +259,28 @@ p.capitalize:first-letter {
     margin: 0 auto;
 }
 
+/*Sous titre clignotant*/
+#clignote{
+    /*permet au clignotement de ne pas faire bouger la page*/
+    padding:0;
+    min-height:30px;
+    height:30px;
+}
+
+/* Play Button tts-frontend*/
+.play_btn{
+    display:none;
+}
+.play_btn:hover{
+    cursor:pointer;!important
+}
+
+/* Audio Element*/
+.audioContainer{
+    width:100%;
+    display:none;
+}
+
 /* Form Wrapper */
 .formwrapper{
     background:rgba(21,8,105,0.6);
@@ -277,6 +299,7 @@ p.capitalize:first-letter {
     background:#3f3f4d;
 }
 
+/* Form Select*/
 .formSelect{
     background: black;
     color:limegreen;

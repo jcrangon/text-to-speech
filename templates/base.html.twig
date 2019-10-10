@@ -31,6 +31,7 @@
         <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('lib/images/apple-icon-152x152.png') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('lib/images/apple-icon-180x180.png') }}">
         <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('lib/images/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="144x144"  href="{{ asset('lib/images/android-icon-144x144.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('lib/images/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('lib/images/favicon-96x96.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('lib/images/favicon-16x16.png') }}">
@@ -62,7 +63,9 @@
             <!-- Bootstrap -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
             <!-- Font Awsome -->
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" samesite="none" secure>
+            <script src="https://kit.fontawesome.com/52d3ef855a.js" crossorigin="anonymous" samesite="none" secure=""></script>
+            <!-- Plugin CSS Files -->
+
             <!-- Main style sheet -->
             <link rel="stylesheet" href="{{ asset('lib/css/styles.css') }}">
         {% endblock %}
@@ -95,10 +98,15 @@
         <!-- / Remove for Production -->
 
         {% block javascripts %}
+            <!-- Bootstrap -->
             <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+            <!-- Plugin JS Files -->
+
+            <!-- Main JS files -->
             <script type="application/javascript" src="{{ asset('lib/js/script.js') }}"></script>
+
         {% endblock %}
     </body>
 </html>
