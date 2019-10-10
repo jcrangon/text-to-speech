@@ -281,6 +281,16 @@ p.capitalize:first-letter {
     display:none;
 }
 
+.audioContainerback{
+    width:100%;
+    display:block;
+}
+
+/* wait gif*/
+.waitgif{
+    display:none;
+}
+
 /* Form Wrapper */
 .formwrapper{
     background:rgba(21,8,105,0.6);

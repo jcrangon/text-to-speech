@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\HttpClient\HttpClient;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VoiceCatalogRepository")
  */
@@ -23,7 +23,25 @@ class VoiceCatalog
 
     public function __construct()
     {
-        $this->setVoiceList(['key0'=>'val0','key1'=>'val1','key2'=>'val2']);
+        $apiKey=$_SERVER["API_KEY"];
+        $voiceUrl=$_SERVER["API_VOICE_URL"];
+        $client=HttpClient::create();
+        $response=$client->request('GET', $voiceUrl, [
+            'headers' => [
+                'Authorization' => 'Basic '.base64_encode('apikey:'.$apiKey),
+            ],
+        ]);
+        $phpResponse=$response->toArray();
+        asort($phpResponse['voices']);
+        $rawVoiceList=$phpResponse['voices'];
+        $voiceList=[];
+        foreach($rawVoiceList as $entry){
+            $splitVoice=explode('_',$entry['name']);
+            $optionVal=$entry['name'];
+            $optionText=$splitVoice[1].' - Lang: '.$splitVoice[0].' - Gender: '.$entry['gender'];
+            $voiceList[$optionText]=$optionVal;
+        }
+        $this->setVoiceList($voiceList);
     }
 
     public function getId(): ?int

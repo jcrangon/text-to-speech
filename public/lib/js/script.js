@@ -22,6 +22,9 @@ jQuery(document).ready(function( $ ) {
     $('#toTTS').fadeIn(4000);
     $('#toSTT').fadeIn(4500);
 
+    //Faire clignoter le sous titre
+    setInterval('FaireClignoterSousTitre()',4000);
+
     //page frontend TTS
     if(null!==document.getElementById('api_data_voice')){
         //requete pour récuperer la liste json des voix
@@ -86,9 +89,17 @@ jQuery(document).ready(function( $ ) {
         }
     });
 
+    //faire apparaitre le bouton de lecture lorsque l'utilisateur change de voix
+    //et que la textarea n'est pas vide
+    $('#api_data_voice').on("change", function(){
+       if($('#api_data_text').val()!==''){
+           $('#playBtn').fadeIn('slow');
+       }
+    });
+
     //click sur le bouton de lecture
     $('#playBtn').on('click', function(){
-        console.log('Play Button Clicked');
+        $("#wait1").fadeIn('100');
         let text = $('#api_data_text').val();
         let voice = $('#api_data_voice').val();
         let url = encodeURI('https://gateway-lon.watsonplatform.net/text-to-speech/api/v1/synthesize?accept=audio/ogg;codecs=opus&download=true&text='+text+'&voice='+voice);
@@ -104,9 +115,11 @@ jQuery(document).ready(function( $ ) {
                 responseType: 'blob',
             },
             success: function (data,status) {
+                $("#wait1").fadeOut('fast');
                 let bloburl=window.URL.createObjectURL(data);
                 $('#audioPlayer').slideDown('3000');
                 $('#audioPlayer').attr('src', bloburl);
+                $('#playBtn').fadeOut('fast');
             },
             error: function(error){
                 console.log("Cannot get Voice data "+error);
@@ -114,7 +127,21 @@ jQuery(document).ready(function( $ ) {
         });
     });
 
-    //Faire clignoter le sous titre
-    setInterval('FaireClignoterSousTitre()',4000);
 
+
+    //page backend TTS
+    if(null!==document.getElementById('api_data_back_voice')){
+
+        //faire apparaitre le bouton de lecture lorsqu'il y a des caractères présents dans le textarea
+        //et le faire disparaitre dans le cas contraire.
+        $('#api_data_back_text').on("keyup",function(){
+            if($(this).val()===''){
+                $('#playBtn').fadeOut('fast');
+                $('#audioPlayer').slideUp('fast');
+            }
+            else{
+                $('#playBtn').fadeIn('slow');
+            }
+        });
+    }
 });

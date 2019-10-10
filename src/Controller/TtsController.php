@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\ApiData;
+use App\Entity\VoiceCatalog;
 use App\Form\ApiDataBackType;
 use App\Form\ApiDataType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TtsController extends AbstractController
@@ -32,17 +35,24 @@ class TtsController extends AbstractController
             "form"=>$form->createView(),
         ]);
     }
-    
+
     /**
      * @Route("/{_locale}/tts/backend")
+     * @param Request $request
+     * @return Response
      */
-    public function ttsBack()
+    public function ttsBack(Request $request)
     {
         $apiData=new ApiData();
         $form=$this->createForm(ApiDataBackType::class,$apiData);
 
+        $showPlayer=false;
+        $playerSrc="";
+
         return $this->render('tts/ttsBack.html.twig', [
             "form"=>$form->createView(),
+            'showPlayer' => $showPlayer,
+            'playerSrc' => $playerSrc,
         ]);
     }
 }
