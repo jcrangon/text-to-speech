@@ -10,8 +10,10 @@
                     <h1>Text-To-Speech back-End Script</h1>
                     <h5>{% trans %}Choose a language and type in a text...{% endtrans %}</h5>
                     <div class="row centered pt-5 justify-content-center">
-                        <div class="col-sm-8 rounded formwrapper pt-3">
-                            {{ form(form) }}
+                        <div class="col-sm-8 rounded formWrapper pt-3">
+                            {{ form_start(form) }}
+                            {{ form_row(form.voice) }}
+                            {{ form_row(form.text) }}
                         </div>
                     </div>
                     <div class="row centered pt-2 justify-content-center">
@@ -29,8 +31,9 @@
                             <a href="{{ path('app_tts_index') }}"><img src="{{ asset('lib/images/goback.png') }}" alt="go back" height="50px" title="{% trans %}Go Back{% endtrans %}"/></a>
                         </div>
                         <div class="col-sm-6 centered">
-                            <img id="playBtn" src="{{ asset('lib/images/play-469.png') }}"  class="play_btn" alt="Play" height="50px" title="{% trans %}Play{% endtrans %}"/>
+                            <input type="submit" id="playBtn" class="play_btn imgBtn" title="{% trans %}Play{% endtrans %}">
                         </div>
+                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>

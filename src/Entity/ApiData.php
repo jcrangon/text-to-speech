@@ -38,7 +38,7 @@ class ApiData
         return $this->voice;
     }
 
-    public function setVoice(array $voice): self
+    public function setVoice(string $voice): self
     {
         $this->voice = $voice;
 

@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\ApiData;
-use App\Entity\VoiceCatalog;
+use App\Entity\IbmWatsonSpeechTtsApi;
+use App\Entity\IbmWatsonTtsVoiceCatalog;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -14,7 +16,11 @@ class ApiDataBackType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $voiceCatalog=new VoiceCatalog();
+        $api = new IbmWatsonSpeechTtsApi();
+        $api = $api->autoConf('env');
+
+        $voiceCatalog=new IbmWatsonTtsVoiceCatalog();
+        $voiceCatalog=$voiceCatalog->setVoiceList($api);
 
         $builder
             ->add('voice', ChoiceType::class,

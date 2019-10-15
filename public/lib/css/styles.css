@@ -275,6 +275,17 @@ p.capitalize:first-letter {
     cursor:pointer;!important
 }
 
+.imgBtn{
+    background-image: url(../images/play-469.png);
+    background-size: cover;
+    background-color: black;
+    border: none;
+    width:60px;
+    height: 50px;
+    cursor: pointer;
+    color: transparent;
+}
+
 /* Audio Element*/
 .audioContainer{
     width:100%;
@@ -286,13 +297,17 @@ p.capitalize:first-letter {
     display:block;
 }
 
+#audioPlayer{
+    outline: none;
+}
+
 /* wait gif*/
 .waitgif{
     display:none;
 }
 
 /* Form Wrapper */
-.formwrapper{
+.formWrapper{
     background:rgba(21,8,105,0.6);
     color:antiquewhite
 }

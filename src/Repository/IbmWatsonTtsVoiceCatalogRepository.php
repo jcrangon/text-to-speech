@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\VoiceCatalog;
+use App\Entity\IbmWatsonTtsVoiceCatalog;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method VoiceCatalog|null find($id, $lockMode = null, $lockVersion = null)
- * @method VoiceCatalog|null findOneBy(array $criteria, array $orderBy = null)
- * @method VoiceCatalog[]    findAll()
- * @method VoiceCatalog[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method IbmWatsonTtsVoiceCatalog|null find($id, $lockMode = null, $lockVersion = null)
+ * @method IbmWatsonTtsVoiceCatalog|null findOneBy(array $criteria, array $orderBy = null)
+ * @method IbmWatsonTtsVoiceCatalog[]    findAll()
+ * @method IbmWatsonTtsVoiceCatalog[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class VoiceCatalogRepository extends ServiceEntityRepository
+class IbmWatsonTtsVoiceCatalogRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, VoiceCatalog::class);
+        parent::__construct($registry, IbmWatsonTtsVoiceCatalog::class);
     }
 
     // /**
-    //  * @return VoiceCatalog[] Returns an array of VoiceCatalog objects
+    //  * @return TtsVoiceCatalog[] Returns an array of TtsVoiceCatalog objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class VoiceCatalogRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?VoiceCatalog
+    public function findOneBySomeField($value): ?IbmWatsonTtsVoiceCatalog
     {
         return $this->createQueryBuilder('v')
             ->andWhere('v.exampleField = :val')
