@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\ApiData;
 use App\Entity\IbmWatsonSpeechTtsApi;
 use App\Entity\IbmWatsonTtsAudioFetcher;
-use App\Entity\TempFileCleaner;
+use App\Service\TempFileCleaner;
 use App\Form\ApiDataBackType;
 use App\Form\ApiDataType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,18 +55,13 @@ class TtsController extends AbstractController
         $apiData=new ApiData();
         $form=$this->createForm(ApiDataBackType::class, $apiData);
 
-        // on handle le form
-        //si valid on cree un objet  watsonTtsApi
-        //puis on cree un objet audioFetcher à qui on passe l'objet api
-        //puis on recupere la propriété filename que l'on refile à $playerSrc
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $apiData = $form->getData();
             $options=array(
                 'selectedVoice' => $apiData->getVoice(),
                 'text' => $apiData->getText(),
-                'projectDir' => $_SERVER['PROJECT_DIR'],
+                'projectDir' => str_replace('\\','/',$this->getParameter('app.project_dir')),
             );
             $ttsApi = new IbmWatsonSpeechTtsApi();
             $ttsApi->autoConf('env');

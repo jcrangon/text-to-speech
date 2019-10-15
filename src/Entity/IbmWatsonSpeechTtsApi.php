@@ -149,27 +149,27 @@ final class IbmWatsonSpeechTtsApi extends Api implements TtsApi
     public function autoConf(String $source) : self
     {
         if($source==='env'){
-            if(isset($_SERVER['WATSON_TTS_API_KEY']) && !empty($_SERVER['WATSON_TTS_API_KEY'])){
-                $this->setApiKey($_SERVER['WATSON_TTS_API_KEY']);
+            if(isset($_ENV['WATSON_TTS_API_KEY']) && !empty($_ENV['WATSON_TTS_API_KEY'])){
+                $this->setApiKey($_ENV['WATSON_TTS_API_KEY']);
             }
 
-            if(isset($_SERVER['WATSON_TTS_USERNAME']) && !empty($_SERVER['WATSON_TTS_USERNAME'])){
-                if(isset($_SERVER['WATSON_TTS_PWD']) && !empty($_SERVER['WATSON_TTS_PWD'])){
-                    $this->setCredentials($_SERVER['WATSON_TTS_USERNAME'],$_SERVER['WATSON_TTS_PWD']);
+            if(isset($_ENV['WATSON_TTS_USERNAME']) && !empty($_ENV['WATSON_TTS_USERNAME'])){
+                if(isset($_ENV['WATSON_TTS_PWD']) && !empty($_ENV['WATSON_TTS_PWD'])){
+                    $this->setCredentials($_ENV['WATSON_TTS_USERNAME'],$_ENV['WATSON_TTS_PWD']);
                 }
 
             }
 
-            if(isset($_SERVER['WATSON_TTS_BASE_URL']) && !empty($_SERVER['WATSON_TTS_BASE_URL'])){
-                $this->setBaseUrl($_SERVER['WATSON_TTS_BASE_URL']);
+            if(isset($_ENV['WATSON_TTS_BASE_URL']) && !empty($_ENV['WATSON_TTS_BASE_URL'])){
+                $this->setBaseUrl($_ENV['WATSON_TTS_BASE_URL']);
             }
 
-            if(isset($_SERVER['WATSON_TTS_VOICE_URL']) && !empty($_SERVER['WATSON_TTS_VOICE_URL'])){
-                $this->setVoiceUrl($_SERVER['WATSON_TTS_VOICE_URL']);
+            if(isset($_ENV['WATSON_TTS_VOICE_URL']) && !empty($_ENV['WATSON_TTS_VOICE_URL'])){
+                $this->setVoiceUrl($_ENV['WATSON_TTS_VOICE_URL']);
             }
 
-            if(isset($_SERVER['WATSON_TTS_SYNTH_URL']) && !empty($_SERVER['WATSON_TTS_SYNTH_URL'])){
-                $this->setSynthUrl($_SERVER['WATSON_TTS_SYNTH_URL']);
+            if(isset($_ENV['WATSON_TTS_SYNTH_URL']) && !empty($_ENV['WATSON_TTS_SYNTH_URL'])){
+                $this->setSynthUrl($_ENV['WATSON_TTS_SYNTH_URL']);
             }
         }
         return $this;

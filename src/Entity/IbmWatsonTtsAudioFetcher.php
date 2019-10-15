@@ -33,6 +33,7 @@ class IbmWatsonTtsAudioFetcher implements TtsAudioFetcher
         if(!isset($options['projectDir']) || empty($options['projectDir'])){
             throw new \LogicException('Missing or Empty option \'projectDir\' parameter.');
         }
+
         $apiKey=$ttsApi->getApiKey();
         $synthUrl=$ttsApi->getSynthUrl().'?accept=audio/ogg;codecs=opus&download=true&text=';
         $selectedVoice=$options['selectedVoice'];
@@ -61,14 +62,14 @@ class IbmWatsonTtsAudioFetcher implements TtsAudioFetcher
             throw new TransportException("Http Request Error", $e->getCode());
         }
 
-        $projectDir=$options['projectDir'];
-        $file = '/lib/audio/'.md5(uniqid()).'.ogg';
-        $fileHandler = fopen($projectDir.$file, 'w+');
+        $publicDir=$options['projectDir'].'/public';
+        $filePath = '/lib/audio/'.md5(uniqid()).'.ogg';
+        $fileHandler = fopen($publicDir.$filePath, 'w+');
         foreach ($client->stream($response) as $chunk) {
             fwrite($fileHandler, $chunk->getContent());
         }
 
-        $this->setFilename($file);
+        $this->setFilename($filePath);
 
     }
 

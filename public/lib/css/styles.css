@@ -270,11 +270,13 @@ p.capitalize:first-letter {
 /* Play Button tts-frontend*/
 .play_btn{
     display:none;
+    outline: none;
 }
 .play_btn:hover{
     cursor:pointer;!important
 }
 
+/* Play Button tts-backend*/
 .imgBtn{
     background-image: url(../images/play-469.png);
     background-size: cover;
