@@ -44,10 +44,12 @@ class TtsController extends AbstractController
     /**
      * @Route("/{_locale}/tts/backend")
      * @param Request $request
+     * @param IbmWatsonSpeechTtsApi $ttsApi
+     * @param IbmWatsonTtsAudioFetcher $audioFetcher
      * @return Response
      * @throws TransportExceptionInterface
      */
-    public function ttsBack(Request $request)
+    public function ttsBack(Request $request, IbmWatsonSpeechTtsApi $ttsApi, IbmWatsonTtsAudioFetcher $audioFetcher)
     {
         $showPlayer=false;
         $playerSrc="";
@@ -63,9 +65,7 @@ class TtsController extends AbstractController
                 'text' => $apiData->getText(),
                 'projectDir' => str_replace('\\','/',$this->getParameter('app.project_dir')),
             );
-            $ttsApi = new IbmWatsonSpeechTtsApi();
             $ttsApi->autoConf('env');
-            $audioFetcher = new IbmWatsonTtsAudioFetcher();
             $audioFetcher->fetchAudio($ttsApi,$options);
             $showPlayer=true;
             $playerSrc=$audioFetcher->getFilename();

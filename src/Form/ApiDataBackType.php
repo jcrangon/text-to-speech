@@ -14,18 +14,24 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ApiDataBackType extends AbstractType
 {
+    private $api;
+    private $apiVoiceCatalog;
+
+    public function __construct(IbmWatsonSpeechTtsApi $api, IbmWatsonTtsVoiceCatalog $IbmVoiceCatalog)
+    {
+        $api=$api->autoConf('env');
+        $this->api = $api;
+        $this->apiVoiceCatalog = $IbmVoiceCatalog;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $api = new IbmWatsonSpeechTtsApi();
-        $api = $api->autoConf('env');
-
-        $voiceCatalog=new IbmWatsonTtsVoiceCatalog();
-        $voiceCatalog=$voiceCatalog->setVoiceList($api);
+        $IbmTtsVoiceCatalog=$this->apiVoiceCatalog->setVoiceList($this->api);
 
         $builder
             ->add('voice', ChoiceType::class,
                 [
-                    'choices' => $voiceCatalog->getVoiceList(),
+                    'choices' => $IbmTtsVoiceCatalog->getVoiceList(),
                     'label' => false,
                     'attr' =>
                         [
