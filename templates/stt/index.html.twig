@@ -8,18 +8,18 @@
             <div class="row centered">
                 <div class="col-sm-12">
                     <h1>Speech-To-Text</h1>
-                    <h3>Choose :</h3>
+                    <h3>{% trans %}Choose{% endtrans %} :</h3>
                     <div class="row centered pt-5">
                         <div class="col-sm-6">
-                            <a href="{{ path('app_tts_ttsfront') }}"><button type="button" class="btn btn-yellow btn-cta btn-lg">Use FRONTEND scripts</button></a>
+                            <a href="{{ path('app_stt_sttfront') }}"><button type="button" class="btn btn-yellow btn-cta btn-lg">{% trans %}Use FRONTEND scripts{% endtrans %}</button></a>
                         </div>
                         <div class="col-sm-6">
-                            <a href="{{ path('app_stt_index') }}"><button id="toSTT" type="button" class="btn btn-yellow btn-cta btn-lg">Use BACKEND scripts</button></a>
+                            <a href="{{ path('app_stt_sttback') }}"><button id="toSTT" type="button" class="btn btn-yellow btn-cta btn-lg">{% trans %}Use BACKEND scripts{% endtrans %}</button></a>
                         </div>
                     </div>
                     <div class="row centered pt-3">
                         <div class="col-sm-12">
-                            <a href="{{ path('app_home_index') }}"><img src="{{ asset('lib/images/goback.png') }}" alt="go back" height="50px" /></a>
+                            <a href="{{ path('app_home_index') }}"><img src="{{ asset('lib/images/goback.png') }}" alt="go back" height="50px" title="{% trans %}Go Back{% endtrans %}"/></a>
                         </div>
                     </div>
                 </div>

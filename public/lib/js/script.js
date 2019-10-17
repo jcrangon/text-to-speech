@@ -1,5 +1,68 @@
+var blinkRec;
 function FaireClignoterSousTitre (){
     $('#clignote h5').fadeOut(900).delay(300).fadeIn(800).delay(2000);
+}
+
+function FaireClignoterRec(){
+    $('#blinkingRec').fadeOut(300).delay(100).fadeIn(200).delay(300);
+}
+
+function getAnnunce(locale, step){
+    let translations;
+    if(locale === 'en'){
+        switch(step){
+            case 'start':
+                translations= {'step':'start', 'annunce':'Start Recording :'}
+            break;
+
+            case 'stop':
+                translations=  {'step':'stop','annunce':'Click When Done :'}
+            break;
+
+            case 'processing':
+                translations=  {'step':'processing','annunce':'Processing...'}
+            break;
+
+            case 'end':
+                translations=  {'step':'end','annunce':'Speech Transcript Received :', 'copy':'Copy To Clipboard', 'terminate':'New Recording'}
+            break;
+
+            default:
+        }
+        return translations;
+    }
+    else if(locale === 'fr'){
+        switch(step){
+            case 'start':
+                translations=  {'step':'start','annunce':'Démarrer L\'enregistrement :'}
+            break;
+
+            case 'stop':
+                translations=  {'step':'stop','annunce':'Cliquez Pour Arreter :'}
+            break;
+
+            case 'processing':
+                translations=  {'step':'processing','annunce':'Veuillez Patienter...'}
+            break;
+
+            case 'end':
+                translations=  {'step':'end','annunce':'Transcrit Reçu : ', 'copy':'Copier au Presse Papier', 'terminate':'Terminer'}
+            break;
+
+            default:
+        }
+        return translations;
+    }
+}
+
+function setTranslations(translation){
+    if (translation.step === 'end') {
+        $('#annunciatorPanel span:first-of-type').html(translation.annunce);
+        $('#copyToClipBoard').html(translation.copy);
+        $('#terminate').html(translation.terminate);
+    } else {
+        $('#annunciatorPanel span:first-of-type').html(translation.annunce);
+    }
 }
 
 jQuery(document).ready(function( $ ) {
@@ -19,6 +82,8 @@ jQuery(document).ready(function( $ ) {
     $('#headerwrap h3').slideDown('8000');
     $('#headerwrap2 h1').slideDown('5000');
     $('#headerwrap2 h5').slideDown('8000');
+    $('#headerwrap3 h1').slideDown('5000');
+    $('#headerwrap3 h5').slideDown('8000');
     $('#toTTS').fadeIn(4000);
     $('#toSTT').fadeIn(4500);
 
@@ -144,4 +209,45 @@ jQuery(document).ready(function( $ ) {
             }
         });
     }
+
+    //page frontend STT
+    if(null!==document.getElementById('headerwrap3')){
+
+        let locale=$('#headerwrap3').attr('data-locale');
+
+        $('#startRecording').on('click', function(){
+            $('#startRecording').toggleClass(('invisible-block'));
+            $('#stopRecording').toggleClass(('invisible-block'));
+            setTranslations(getAnnunce(locale, 'stop'));
+            //Faire clignoter le sous titre
+            $('#blinkingRec').html('REC.');
+            blinkRec=setInterval('FaireClignoterRec()',700);
+        });
+
+        $('#stopRecording').on('click', function(){
+            $('#stopRecording').toggleClass(('invisible-block'));
+            $('#processingGif').toggleClass(('invisible-block'));
+            setTranslations(getAnnunce(locale, 'processing'));
+            $('#blinkingRec').html('');
+            clearInterval(blinkRec);
+        });
+
+        $('#processingGif').on('click', function(){
+            $('#processingGif').toggleClass(('invisible-block'));
+            $('#transcriptResult').toggleClass(('invisible-block'));
+            $('#copyToClipBoard').toggleClass(('invisible-block'));
+            $('#terminate').toggleClass(('invisible-block'));
+            setTranslations(getAnnunce(locale, 'end'));
+        });
+
+        $('#terminate').on('click', function(){
+            $('#transcriptResult').toggleClass(('invisible-block'));
+            $('#startRecording').toggleClass(('invisible-block'));
+            $('#copyToClipBoard').toggleClass(('invisible-block'));
+            $('#terminate').toggleClass(('invisible-block'));
+            setTranslations(getAnnunce(locale, 'start'));
+        });
+    }
+
+
 });

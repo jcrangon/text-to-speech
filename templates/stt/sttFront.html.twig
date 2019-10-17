@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Speech | STT FrontEnd{% endblock %}
+
+{% block body %}
+    <div id="headerwrap3" data-locale="{{ locale }}">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-sm-12">
+                    <h1>Speech-to-text Front-End Script</h1>
+                    <div id="clignote"><h5>{% trans %}Choose a language and start recording...{% endtrans %}</h5></div>
+                    <div class="row centered pt-5 justify-content-center">
+                        <div class="col-sm-8 rounded-top formWrapper pt-3">
+                            {#{{ form(form)}}#}
+                        </div>
+                    </div>
+                    <div class="row centered justify-content-center" style="height:400px">
+                        <div id="annunciatorPanel" class="col-sm-8 h-25 formWrapper font-lg">
+                            <span class="d-block text-center">{% trans %}Start Recording{% endtrans %} :</span>
+                            <span id="blinkingRec" class="w-25 text-left" style="color:darkred; font-weight: bolder"></span>
+                        </div>
+                        <div id="controlPanel" class="col-sm-8 h-75 rounded-bottom formWrapper pb-3">
+                            <img id="startRecording" src="{{ asset('lib/images/record.png') }}" class="cursor-pointer h-100 mx-auto rounded-circle" height="50px" alt="start"/>
+                            <img id="stopRecording" src="{{ asset('lib/images/stop.png') }}" class="invisible-block cursor-pointer h-100 mx-auto rounded-circle" height="50px" alt="stop"/>
+                            <img id="processingGif" src="{{ asset('lib/images/processingGif.gif') }}" class=" invisible-block cursor-pointer h-100 mx-auto rounded-circle" height="50px" alt="processing"/>
+                            <textarea id="transcriptResult" name="transcriptResult" placeholder="Transcript result" class="invisible-block h-100 w-100 formTextarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="row centered pt-3 flex-wrap-reverse">
+                        <div class="col-sm-4 centered pb-3">
+                            <a href="{{ path('app_stt_index') }}"><img src="{{ asset('lib/images/goback.png') }}" alt="go back" height="50px" title="{% trans %}Go Back{% endtrans %}"/></a>
+                        </div>
+                        <div class="col-sm-4 centered pb-3">
+                            <button id="copyToClipBoard" class="invisible-block btn btn-outline-warning"></button>
+                        </div>
+                        <div class="col-sm-4 centered pb-3">
+                            <button id="terminate" class="invisible-block btn btn-outline-danger"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
