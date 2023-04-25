@@ -8,6 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SttController extends AbstractController
 {
+
+    public function __construct() {
+        
+    }
     /**
      * @Route("/{_locale}/stt")
      */
